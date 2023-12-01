@@ -7,8 +7,8 @@
        * SITE_NAME：站点名称
        */
       window.GLOBAL_CONFIG = {
-        SCF_GATEWAY: "//tight-bar-e3b3.logi.workers.dev",
-        SITE_NAME: "FODI",
+        SCF_GATEWAY: "//king-is-back.ptvbkihbyzfmjjc.workers.dev",
+        SITE_NAME: "Micro's Archive",
         IS_CF: true,
       };
       if (window.GLOBAL_CONFIG.SCF_GATEWAY.indexOf("workers") === -1) {
@@ -204,9 +204,9 @@
         float: right;
         text-align: center;
         border: solid rgb(218, 215, 215) 1px;
-        border-radius: 1em;
+        border-radius: 9px;
         margin: 1em 0.2em;
-        width: 4em;
+        width: 5em;
         height: 2em;
         line-height: 2em;
         user-select: none;
@@ -242,8 +242,8 @@
       }
 
       .loading {
-        color: white;
-        background: rgb(218, 215, 215);
+        color: aqua;
+        background: black;
         height: 100%;
         width: 8em;
         margin: 0 auto;
@@ -290,6 +290,8 @@
         height: 100%;
         margin: 0;
         padding: 0;
+        background-color: #14243c;
+        color: #cbcbcb;
       }
 
       .header-wrapper {
@@ -320,6 +322,7 @@
         white-space: nowrap;
         /* margin-left: auto;
                 padding-left: 2em; */
+        color: aqua;
       }
 
       .nav {
@@ -344,7 +347,7 @@
       .nav-path:hover,
       .tree-node:hover,
       .row.file-wrapper:hover {
-        color: rgb(90, 101, 133);
+        color: rgb(233 198 11);
         cursor: pointer;
       }
 
@@ -356,7 +359,7 @@
       }
 
       .main {
-        position: relative;
+        position: inherit;
         height: 100%;
         width: 100%;
       }
@@ -910,14 +913,14 @@
         const buttonParent = button.parentElement;
         const buttonClone = button.cloneNode(true);
         buttonParent.replaceChild(buttonClone, button);
-        input.placeholder = "请输入密码";
+        input.placeholder = "Enter Password";
         buttonClone.addEventListener("click", (event) => {
           const passwd = input.value;
           if (!input.value) {
             return;
           }
           input.value = "";
-          input.placeholder = "正在验证..";
+          input.placeholder = "Verifying...";
           sendRequest(
             window.api.method,
             window.api.url,
@@ -926,7 +929,7 @@
             (data) => {
               const newFiles = JSON.parse(data);
               if (newFiles.encrypted) {
-                input.placeholder = "密码错误";
+                input.placeholder = "Incorrect";
               } else {
                 window.fileCache.set(newFiles.parent, newFiles);
                 fetchFileList(newFiles.parent);
@@ -1203,8 +1206,8 @@
                   window.api.url + "?file=" + encodeURI(path)
                 );
                 const btn = document.querySelector(".btn.quote");
-                btn.innerHTML = "已复制";
-                setTimeout(() => (btn.innerHTML = "引用"), 250);
+                btn.innerHTML = "Copied";
+                setTimeout(() => (btn.innerHTML = "Quote"), 250);
               });
             document
               .querySelector(".btn.share")
@@ -1225,8 +1228,8 @@
                     encodeURI(sharePath())
                 );
                 const btn = document.querySelector(".btn.share");
-                btn.innerHTML = "已复制";
-                setTimeout(() => (btn.innerHTML = "分享"), 250);
+                btn.innerHTML = "Copied";
+                setTimeout(() => (btn.innerHTML = "Share"), 250);
               });
             switchRightDisplay("preview");
 
@@ -1603,16 +1606,16 @@
           <div class="preview">
             <div class="info">
               <div class="file-name"></div>
-              <div class="btn download">下载</div>
-              <div class="btn quote">引用</div>
-              <div class="btn share">分享</div>
+              <div class="btn download">Download</div>
+              <div class="btn quote">Quote</div>
+              <div class="btn share">Share</div>
             </div>
             <div class="content"></div>
           </div>
           <div class="password-wrapper">
             <div class="password">
               <input type="password" />
-              <button>提交</button>
+              <button>Enter</button>
             </div>
           </div>
         </div>
